@@ -13,8 +13,8 @@
     "link": "https://vk.com/wall-185952935_843",
     "linkLabel": "Открыть во ВКонтакте",
     "cover": "https://sun9-29.userapi.com/s/v1/ig2/Y2E4-Mk6rMfeaz0L2j2upmBYkzN416pLRpkPKg64ARfqVfACNBvOq6ffNZEYiVlzErlcnsBq9mOlx7gLljw0nF8p.jpg?quality=95&crop=0,0,1121,1402&as=32x40,48x60,72x90,108x135,160x200,240x300,360x450,480x600,540x675,640x800,720x900,1080x1351,1121x1402&from=bu&u=lY1n2MsGKFvekyMaXgE5moVEvCW2iosLxPtbbQy76C4&cs=1121x0",
-    "palette": "#4F38A5",
-    "isDark": true,
+    "palette": "#ECEBFF",
+    "isDark": false,
     "coverPosCard": "center center",
     "coverPosModal": "center center",
     "body": [
@@ -187,7 +187,7 @@
         "Автор: Игорь Дыдыкин, предметный и промышленный дизайнер, заведующий лаборатории перспективных исследований Сибирского центра дизайна."
       ]
     ],
-    "palette": "#B7AEFF",
+    "palette": "#E1DFFF",
     "isDark": false,
     "coverPosCard": "center 18%",
     "coverPosModal": "center 18%",
@@ -255,8 +255,8 @@
         "Автор: Игорь Дыдыкин, предметный и промышленный дизайнер, заведующий лаборатории перспективных исследований Сибирского центра дизайна."
       ]
     ],
-    "palette": "#7B50D8",
-    "isDark": true,
+    "palette": "#D5D3FF",
+    "isDark": false,
     "linkLabel": "Открыть в Дзене",
     "coverPosCard": "center center",
     "coverPosModal": "center center"
@@ -270,7 +270,7 @@
     "link": "https://vk.com/wall-185952935_841",
     "linkLabel": "Открыть во ВКонтакте",
     "cover": "https://sun9-7.userapi.com/s/v1/ig2/UvMvfnEGleAoXevp--J-XmqJcSfwVTP6ETKgRjRxpvwV2m_V9SFKd7Fc_-sGygQYgEotEeWJ0koujGvOqt5haTRI.jpg?quality=95&as=32x40,48x60,72x90,108x135,160x200,240x300,360x450,480x600,540x675,640x800,720x900,1080x1350&from=bu&u=VAUkapDowWtnGXRTcnXvo19e-cuK7-qiOMlV1FWbpVw&cs=1080x0",
-    "palette": "#D7A4FF",
+    "palette": "#C7C7FB",
     "isDark": false,
     "coverPosCard": "center center",
     "coverPosModal": "center center",
@@ -323,8 +323,8 @@
     "tag": "Научная статья / предметный дизайн",
     "title": "Принципы систематизации креативной деятельности на примере предметного дизайна",
     "summary": "О систематизации креативной деятельности в предметном дизайне, роли личных и командных принципов, синергии и междисциплинарного взаимодействия.",
-    "palette": "#6D5CE7",
-    "isDark": true,
+    "palette": "#B8B8F2",
+    "isDark": false,
     "body": [
       [
         "h",
@@ -518,7 +518,7 @@
     "tag": "Научная статья / креативная деятельность",
     "title": "Пятиэлементная модель систематизации креативной деятельности в практике современного дизайна",
     "summary": "Авторская пятиэлементная модель для устойчивости креативных проектов: процессы, триггеры, ресурсы и постпроектное развитие.",
-    "palette": "#C7B8FF",
+    "palette": "#A6A8EA",
     "isDark": false,
     "body": [
       [
@@ -781,7 +781,7 @@
     "tag": "Научная статья / Double Diamond",
     "title": "Проблематика и систематизация креативности на примере методологии «Двойной бриллиант»",
     "summary": "Разбор методологии Double Diamond, барьеров творчества и ограничений схем, которые пытаются систематизировать креативный процесс.",
-    "palette": "#8E63E8",
+    "palette": "#8A8ED7",
     "isDark": true,
     "body": [
       [
@@ -956,8 +956,8 @@
     "tag": "Научная статья / световая среда",
     "title": "Современные тенденции развития дизайна световой среды и роль световых арт-объектов в формировании городской среды",
     "summary": "О световой среде, LED-технологиях, интерактивных системах, медиафасадах и роли световых арт-объектов в городской среде.",
-    "palette": "#AEBEFF",
-    "isDark": false,
+    "palette": "#7177C4",
+    "isDark": true,
     "body": [
       [
         "lead",
@@ -1075,15 +1075,26 @@
   }
 
   function typograf(value) {
-    const words = "а|в|во|и|к|ко|о|об|обо|от|до|с|со|у|по|за|из|на|над|под|при|про|для|без|через|перед|между|около|или|но";
-    const reg = new RegExp("(^|[\\s(«„“'—–-])(" + words + ")\\s+", "gi");
+    const words = "а|в|во|и|й|к|ко|о|об|обо|от|до|с|со|у|по|за|из|на|над|под|при|про|для|без|через|перед|между|около|или|но|не|ни|же|ли";
+    const reg = new RegExp("(^|[\s(«„“'—–-])("
+      + words + ")\s+", "gi");
     return String(value || "").replace(reg, function (match, before, word) {
       return before + word + "&nbsp;";
     });
   }
 
+  function stripNoise(value) {
+    return String(value || "")
+      .replace(/\[(?:[^\]]*?\d[^\]]*?)\]/g, "")
+      .replace(/\((?:см\.?\s*)?(?:рис\.?|рисунок|схема)\s*\d+[^)]*\)/gi, "")
+      .replace(/(?:^|\s)(?:Рис\.?|Рисунок|Схема)\s*\d+\.\s*[^.!?]*(?:[.!?]|$)/gim, " ")
+      .replace(/\s{2,}/g, " ")
+      .replace(/\s+([,.;:!?])/g, "$1")
+      .trim();
+  }
+
   function clean(value) {
-    return typograf(escapeHTML(value));
+    return typograf(escapeHTML(stripNoise(value)));
   }
 
   function getArticle(id) {
@@ -1093,6 +1104,7 @@
   function bodyNode(part) {
     const type = part[0];
     const text = clean(part[1]);
+    if (!text) return "";
 
     if (type === "h") return "<h4>" + text + "</h4>";
     if (type === "lead") return "<p class='lpi-dzen-article-lead'>" + text + "</p>";
@@ -1118,7 +1130,7 @@
       modalLink.innerHTML = "";
     }
 
-    modalBody.innerHTML = (article.body || []).map(bodyNode).join("");
+    modalBody.innerHTML = "<div class='lpi-dzen-modal__body-inner'>" + (article.body || []).map(bodyNode).join("") + "</div>";
 
     modalCover.classList.remove("is-visible");
     modalCover.innerHTML = "";
